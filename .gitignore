@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# v-19 scan output (don't commit real scan results)
+v19_report_*.json
+v19_report_*.csv
+
+# Enterprise / proprietary (NEVER commit)
+src/
+config/
+data/
+Documentation/
+tickets/
+
+# Enterprise test files at tests/ root (keep tests/v19/ only)
+tests/test_*.py
+tests/cloud_sim.py

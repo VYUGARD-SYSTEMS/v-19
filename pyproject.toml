@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "v19-scanner"
+version = "1.0.0"
+description = "19ms Multi-Cloud Identity Scanner — detect cross-cloud risks across AWS, Azure, GCP, and Kubernetes"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Vyugard Systems", email = "hello@vyugard.tech"},
+]
+keywords = ["security", "cloud", "aws", "azure", "gcp", "kubernetes", "iam", "identity", "scanner"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Systems Administration",
+]
+
+dependencies = [
+    "boto3>=1.26.0",
+    "pyyaml>=6.0",
+    "azure-identity>=1.12.0",
+    "azure-mgmt-authorization>=3.0.0",
+    "google-cloud-iam>=2.10.0",
+    "google-auth>=2.25.0",
+    "kubernetes>=25.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/vyugard-systems/v-19"
+Documentation = "https://github.com/vyugard-systems/v-19#readme"
+Issues = "https://github.com/vyugard-systems/v-19/issues"
+Enterprise = "https://vyugard.tech/enterprise"
+
+[project.scripts]
+v-19 = "cli.v19.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cli*", "pkg*", "internal*"]
