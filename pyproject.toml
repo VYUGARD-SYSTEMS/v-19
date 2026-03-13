@@ -55,4 +55,4 @@ v-19 = "cli.v19.main:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["cli*", "pkg*", "internal*"]
+include = ["cli*", "pkg*", "internal*", "v19*"]

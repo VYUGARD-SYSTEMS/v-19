@@ -1,6 +1,27 @@
-# v-19 Scanner: Open-Source Multi-Cloud Identity Scanner
+# v-19 | The Vyugard Standard
 
-**Detect cross-cloud identity risks across AWS, Azure, GCP, and Kubernetes.**
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Sovereign](https://img.shields.io/badge/Protocol-v--19-black)](https://vyugard.tech)
+[![Speed](https://img.shields.io/badge/Latency-19ms-green)](https://vyugard.tech)
+
+**v-19** is a high-velocity, multi-cloud sovereignty engine. It is designed to quantify and visualize the "Triple Jump" attack chains that exist between fragmented cloud domains.
+
+In a world of perimeter-less infrastructure, **v-19** provides the definitive view of your digital borders in **19ms**.
+
+---
+
+## The Triple Jump Problem
+
+Current security tools audit clouds in isolation. **v-19** audits the **Identity Bridges** between them.
+
+A "Triple Jump" occurs when a compromised identity in **AWS** leads to lateral movement in **Azure**, finally terminating in a **GCP** data exfiltration point. v-19 identifies these bridges before they are crossed.
+
+```
+  AWS IAM Role ──OIDC──▶ Azure AD SP ──Federation──▶ GCP Service Account
+       ▲                                                      │
+       │              THE TRIPLE JUMP                         ▼
+   Compromised                                        Data Exfiltration
+```
 
 ---
 
@@ -10,14 +31,14 @@
 - **Risk classification** — CRITICAL / HIGH / MEDIUM / LOW severity buckets
 - **Cross-cloud bridge detection** — counts and cloud pairs (e.g., "aws → azure: 3 bridges")
 - **Export** — JSON and CSV reports
-- **Fast** — scans run in milliseconds
+- **19ms** — scans run in under 20 milliseconds
 
 ## What Requires a License
 
 Enterprise Edition (via API key) adds:
 - Full cross-cloud attack path analysis (identity chains, Triple Jump detection)
 - Automated remediation code generation
-- Financial exposure calculation
+- Financial exposure quantification (ZAR / USD)
 - POPIA compliance reporting
 
 ---
@@ -140,11 +161,40 @@ Get a license at [vyugard.tech/enterprise](https://vyugard.tech/enterprise).
 
 ---
 
+## Use as a Library
+
+Integrate the v-19 engine into your own application:
+
+```python
+from v19 import Scanner, BridgeDetector
+from v19.engine import V19RiskScorer, RiskLevel
+from v19.providers import AWSScanner, AzureScanner
+
+# Scan and score
+scorer = Scanner()
+findings = scorer.score_all(aws_identities=aws_ids, azure_identities=az_ids)
+
+# Detect cross-cloud bridges
+detector = BridgeDetector()
+bridges = detector.detect(aws_ids + az_ids)
+```
+
+---
+
 ## Contributing
 
 We welcome contributions — scanner improvements, bug fixes, docs. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Specification
+
+The v-19 protocol and the Triple Jump taxonomy are formally defined in [`spec/`](spec/):
+
+- [**PROTOCOL_V19.md**](spec/PROTOCOL_V19.md) — The 19ms standard: technical constraints, scan phases, and latency guarantees
+- [**TRIPLE_JUMP.md**](spec/TRIPLE_JUMP.md) — Mathematical definition of cross-cloud attack bridges
+
 ## License
+
+Copyright (c) 2026 Vyugard Systems. All rights reserved.
 
 Apache 2.0 — see [LICENSE](LICENSE).
 
