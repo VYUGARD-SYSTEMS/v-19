@@ -33,13 +33,39 @@ A "Triple Jump" occurs when a compromised identity in **AWS** leads to lateral m
 - **Export** — JSON and CSV reports
 - **19ms** — scans run in under 20 milliseconds
 
-## What Requires a License
+---
 
-Enterprise Edition (via API key) adds:
-- Full cross-cloud attack path analysis (identity chains, Triple Jump detection)
-- Automated remediation code generation
-- Financial exposure quantification (ZAR / USD)
-- POPIA compliance reporting
+## The "Blast Radius" Pricing Model
+
+We don't charge for noise. We charge for signal. Pricing scales with the infrastructure protected and the severity of risk mitigated.
+
+| | **Community** | **Pro** | **Enterprise** |
+|---|---|---|---|
+| **Price** | Free | $900–$2,500/mo | $100,000+/yr |
+| **Identities** | 25 | 50 / 150 / 500 | Unlimited |
+| **Clouds** | 1 | 4 | 4 |
+| **Risk classification** | Yes | Yes | Yes |
+| **JSON/CSV export** | Yes | Yes | Yes |
+| **Cross-cloud bridges** | Counts only | Full analysis | Full analysis |
+| **Financial exposure** | — | Blast radius scoring | Blast radius scoring |
+| **Dashboard export** | — | Yes | Yes |
+| **Auto-remediation** | — | — | CI/CD code generation |
+| **Compliance** | — | — | SOC 2 / HIPAA / POPIA |
+| **Support** | GitHub Issues | Email | Dedicated + onboarding |
+
+```bash
+# Community (no key needed)
+v-19 analyze --aws
+
+# Pro
+v-19 analyze --all --api-key V19-PRO-xxx
+
+# Enterprise
+v-19 remediate --api-key V19-ENT-xxx
+
+# Check your tier
+v-19 license
+```
 
 ---
 
@@ -132,32 +158,32 @@ v-19 export --format csv -o my_report.csv
 
 ## All Commands
 
-| Command | License | Description |
-|---------|---------|-------------|
-| `v-19 analyze` | Free | Scan clouds and classify risks |
-| `v-19 risks` | Free | Show classified findings (sorted) |
-| `v-19 export` | Free | Export to JSON or CSV |
-| `v-19 bridges` | Enterprise | Full cross-cloud attack path analysis |
-| `v-19 remediate` | Enterprise | Generate fix code |
-| `v-19 exposure` | Enterprise | Financial exposure & ROI report |
-| `v-19 compliance` | Enterprise | POPIA compliance report |
+| Command | Tier | Description |
+|---------|------|-------------|
+| `v-19 analyze` | Community | Scan clouds and classify risks |
+| `v-19 risks` | Community | Show classified findings (sorted) |
+| `v-19 export` | Community | Export to JSON or CSV |
+| `v-19 license` | Community | View current tier and capabilities |
+| `v-19 bridges` | Pro | Full cross-cloud bridge analysis |
+| `v-19 exposure` | Pro | Financial blast radius report |
+| `v-19 remediate` | Enterprise | Auto-generate fix code |
+| `v-19 compliance` | Enterprise | SOC 2 / HIPAA / POPIA reports |
 
 ---
 
-## Enterprise Edition
+## Getting a License
 
 ```bash
-# Set your API key
-export V19_API_KEY=your-key-here
+# Set your API key (persists for the session)
+export V19_API_KEY=V19-PRO-your-key
 
 # Or pass it per command
-v-19 bridges --api-key YOUR_KEY
-v-19 remediate --api-key YOUR_KEY
-v-19 exposure --api-key YOUR_KEY
-v-19 compliance --api-key YOUR_KEY
+v-19 bridges --api-key V19-PRO-your-key
+v-19 remediate --api-key V19-ENT-your-key
 ```
 
-Get a license at [vyugard.tech/enterprise](https://vyugard.tech/enterprise).
+Get Pro: [vyugard.tech/pro](https://vyugard.tech/pro)  
+Get Enterprise: [vyugard.tech/enterprise](https://vyugard.tech/enterprise)
 
 ---
 
